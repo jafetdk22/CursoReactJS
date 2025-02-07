@@ -1,32 +1,133 @@
-.loading-container {
+body.loading-active {
+    overflow: hidden;
+}
+
+.LoadingTodo-container {
+    position: relative;
+    width: calc(100% - 24px);
+    max-width: 800px;
+    padding: 16px;
+    background: #2a273f;
+    border-radius: 12px;
+    margin: 16px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #393552;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    overflow: hidden;
+}
+
+.LoadingTodo-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    padding: 20px;
-  }
-  
-  .loading-spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-top: 4px solid #09f;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(196, 167, 231, 0.1),
+        transparent
+    );
+    animation: loading-shimmer 1.5s infinite;
+}
+
+.LoadingTodo-text {
+    flex-grow: 1;
+    margin: 0 16px;
+}
+
+.LoadingTodo-completeIcon,
+.LoadingTodo-deleteIcon {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
+}
+
+.LoadingTodo-completeIcon {
+    background: #31748f40;
+}
+
+.LoadingTodo-deleteIcon {
+    background: #eb6f9240;
+}
+
+.LoadingTodo-text .LoadingTodo-firstLine,
+.LoadingTodo-text .LoadingTodo-secondLine {
+    height: 16px;
+    border-radius: 4px;
+    background: #393552;
+    margin-bottom: 8px;
+}
+
+.LoadingTodo-firstLine {
+    width: 80%;
+}
+
+.LoadingTodo-secondLine {
+    width: 60%;
+}
+
+@keyframes loading-shimmer {
     0% {
-      transform: rotate(0deg);
+        transform: translateX(-100%);
     }
     100% {
-      transform: rotate(360deg);
+        transform: translateX(100%);
     }
-  }
-  
-  .loading-container p {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
-  }
+}
+
+/* Animación de pulso para los elementos */
+.LoadingTodo-completeIcon,
+.LoadingTodo-deleteIcon,
+.LoadingTodo-firstLine,
+.LoadingTodo-secondLine {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+/* Múltiples items con retraso en la animación */
+.LoadingTodo-container:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.LoadingTodo-container:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Efecto hover suave */
+.LoadingTodo-container:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .LoadingTodo-container {
+        width: calc(100% - 32px);
+        padding: 12px;
+        margin: 12px auto;
+    }
+
+    .LoadingTodo-text {
+        margin: 0 12px;
+    }
+
+    .LoadingTodo-completeIcon,
+    .LoadingTodo-deleteIcon {
+        width: 28px;
+        height: 28px;
+    }
+}

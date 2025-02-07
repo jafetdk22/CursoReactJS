@@ -1,67 +1,146 @@
-form{
+.TodoForm {
     width: 90%;
-    max-width: 300px;
-    background-color: #fff;
-    padding: 33px 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-label{
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    color: #1e1e1f;
-    margin-bottom: 26px;
+    max-width: 500px;
+    background-color: #2a273f;
+    padding: 24px 32px;
+    border-radius: 16px;
+    border: 1px solid #393552;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
 }
 
-textarea{
-    background-color: #f9fbfc;
-    border: 2px solid #202329;
-    border-radius: 2px;
-    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
-    color: #1e1e1f;
-    font-size: 20px;
-    text-align: center;
-    padding: 12px;
-    height: 96px;
-    width: calc(100% - 25px);
+.TodoForm-label {
+    font-size: 18px;
+    color: #e0def4;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.TodoForm-textarea {
+    width: calc(100% - 32px);
+    font-size: 16px;
+    background: #1f1d2b;
+    border: 2px solid #393552;
+    border-radius: 12px;
+    color: #e0def4;
+    padding: 16px;
+    margin-bottom: 24px;
     resize: none;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
-textarea::placeholder{
-    color: #a5a5a5;
-    font-family: 'Montserrat';
-    font-weight: 400;
+
+.TodoForm-textarea:focus {
+    outline: none;
+    border-color: #c4a7e7;
+    box-shadow: 0 0 0 4px rgba(196, 167, 231, 0.1);
+    transform: translateY(-2px);
 }
-textarea:focus{
-    outline-color: #61DAFA;
+
+.TodoForm-textarea:hover {
+    border-color: #908caa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-.TodoForm-buttonContainer{
-    margin-top: 14px;
+
+.TodoForm-textarea::placeholder {
+    color: #908caa;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.TodoForm-textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.TodoForm-textarea::-webkit-scrollbar-track {
+    background: #1f1d2b;
+    border-radius: 4px;
+}
+
+.TodoForm-textarea::-webkit-scrollbar-thumb {
+    background: #393552;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.TodoForm-textarea::-webkit-scrollbar-thumb:hover {
+    background: #c4a7e7;
+}
+
+.TodoForm-buttonContainer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    gap: 16px;
+    margin-top: 16px;
 }
-.TodoForm-button{
+
+.TodoForm-button {
     cursor: pointer;
-    display: inline-block;
-    font-size: 20px;
-    color: #202329;
-    font-weight: 400;
-    width: 120px;
-    height: 48px;
-    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
     border: none;
-    font-family: 'Montserrat';
+    transition: all 0.3s ease;
 }
-.TodoForm-button--cancel{
-    background-color: transparent;
+
+.TodoForm-button--add {
+    background: #31748f;
+    color: #e0def4;
+    flex: 2;
 }
-.TodoForm-button--add{
-    background-color: #61DAFA;
-    box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
+
+.TodoForm-button--add:hover {
+    background: #9ccfd8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(156, 207, 216, 0.3);
+}
+
+.TodoForm-button--add:active {
+    transform: translateY(0);
+}
+
+.TodoForm-button--cancel {
+    background: #393552;
+    color: #e0def4;
+    flex: 1;
+}
+
+.TodoForm-button--cancel:hover {
+    background: #eb6f92;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(235, 111, 146, 0.3);
+}
+
+.TodoForm-button--cancel:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .TodoForm {
+        width: calc(100% - 32px);
+        padding: 16px;
+        margin: 16px;
+    }
+
+    .TodoForm-textarea {
+        width: 100%;
+    }
+
+    .TodoForm-buttonContainer {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .TodoForm-button {
+        width: 100%;
+        margin: 4px 0;
+    }
 }
 
 
