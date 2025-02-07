@@ -2,10 +2,39 @@
     font-size: 24px;
     text-align: center;
     margin: 0;
-    padding: 48px;
-    font-weight: normal;
-  }
-  
-  .TodoCounter span {
+    padding: 32px;
+    color: #c4a7e7;
     font-weight: bold;
-  }
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.TodoCounter span {
+    font-weight: 600;
+    color: #3498db;
+    position: relative;
+    display: inline-block;
+    padding: 0 0.3rem;
+}
+
+.TodoCounter span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3498db;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.TodoCounter span:hover::after {
+    transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+    .TodoCounter {
+        font-size: 1.5rem;
+        padding: 2rem 1rem;
+    }
+}
